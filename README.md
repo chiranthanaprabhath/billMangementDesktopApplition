@@ -1,7 +1,12 @@
+# Login
 ![image](https://drive.google.com/uc?export=view&id=1zalBCzygDsGvcRy_X4SP0sHSCWKfFV3b)
+# UI Validations
 ![image](https://drive.google.com/uc?export=view&id=12MWvzneUgBMKaURv7sY2eDepirG_GiMx)
+# Data Sending
 ![image](https://drive.google.com/uc?export=view&id=1S4kWjpq1NLhjUDcNalsRaNE_gLJgVinG)
+# Susscess Msg
 ![image](https://drive.google.com/uc?export=view&id=1sAVDNCjGY0hSCHv0aOIy1VyBSsSDQSQL)
+# Table View 
 ![image](https://drive.google.com/uc?export=view&id=1ECR1HUkgz07g7nCPZtRXdM4-W7PgahBP)
 
 # ElectronApp
