@@ -1,3 +1,5 @@
+![alt text](https://drive.google.com/file/d/1zalBCzygDsGvcRy_X4SP0sHSCWKfFV3b/view?usp=sharing?raw=true)
+
 # ElectronApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.
