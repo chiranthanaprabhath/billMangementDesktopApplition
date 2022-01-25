@@ -1,4 +1,4 @@
-![image](https://drive.google.com/uc?export=view&id=zalBCzygDsGvcRy_X4SP0sHSCWKfFV3b)
+![image](https://drive.google.com/uc?export=view&id=1zalBCzygDsGvcRy_X4SP0sHSCWKfFV3b)
 
 # ElectronApp
 
