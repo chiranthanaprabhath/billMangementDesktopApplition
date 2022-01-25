@@ -1,0 +1,26 @@
+<!-- The Modal -->
+<div id="myModal" [class]="active? 'modal-view':'modal-close'">
+
+  <!-- Modal content -->
+  <div *ngIf="!isLoading" class="modal-content">
+    <div (click)="closeModel()"><p class="close mb-1 float-right">&times;</p></div>
+    <div  class="row h-100 w-100 align-content-center p-1">
+      <div>
+        <img src='{{imagePopUp}}' class="pop-up-view-icon mr-5 ml-2" alt = "Test Image" />
+      </div>
+      <div class="mt-2"><h4 class="success">{{msgTitle}}</h4></div>
+    </div>
+    <div class="row w-100 justify-content-center mt-3"> <b>{{msgContent}}</b> </div>
+    <div class="row w-100 justify-content-end mt-3">
+      <button mat-raised-button color="primary" (click)="closeModel()">OK</button>
+    </div>
+
+  </div>
+  <!-- Modal content -->
+  <div *ngIf="isLoading" class="modal-content">
+    <div  class="row h-100 w-80 justify-content-center p-5 mr-5 ml-5">
+      <span class="text-lg-center w-100 text-primary justify-content-center"><b>Sending</b></span>
+      <mat-progress-bar mode="indeterminate" class="p-2"></mat-progress-bar>
+    </div>
+  </div>
+</div>

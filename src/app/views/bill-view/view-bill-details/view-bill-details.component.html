@@ -1,0 +1,99 @@
+<div class="content h-100 align-content-center" role="main">
+  <div class="row box-size w-100" align="center">
+    <div class="col" align="center">
+      <div class="row box-size w-100 align-content-start">
+        <div class="col h-100 w-100 align-items-center">
+            <span class="row h-100 w-100 align-content-center">
+              <h6 class="text-primary  font-weight-bold">FILTER BY <br>METAL TYPE&nbsp;:</h6>
+            </span>
+        </div>
+        <div class="col-8 h-100 w-50 mt-3">
+            <span class="row h-100 w-100 align-content-start">
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Select Metal Type</mat-label>
+                <mat-select>
+                  <mat-option value="one">6-9"</mat-option>
+                  <mat-option value="two">9-12"</mat-option>
+                  <mat-option value="one">12-15"</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </span>
+        </div>
+      </div>
+    </div>
+    <div class="col justify-content-between" align="start">
+      <div class="row box-size w-100 align-content-start">
+        <div class="col h-100 w-50 align-items-center">
+            <span class="row h-100 w-100 align-content-center">
+              <h6 class="text-primary  font-weight-bold">FILTER BY <br>DATE&nbsp;:</h6>
+            </span>
+        </div>
+        <div class="col-8 h-100 w-50 mt-2">
+            <span class="row h-100 w-100 align-content-center">
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate placeholder="Start date">
+                  <input matEndDate placeholder="End date">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field>
+            </span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="mat-elevation-z8 w-100" flex style="width: -webkit-calc(100%)">
+    <table mat-table [dataSource]="dataSource">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="date" >
+        <th mat-header-cell *matHeaderCellDef ng-view flex layout-fill style="width: 25%"> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="billNo">
+        <th mat-header-cell *matHeaderCellDef ng-view flex layout-fill style="width: 15%"> Bill No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.originalBillNo}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="lorryNo">
+        <th mat-header-cell *matHeaderCellDef ng-view flex layout-fill style="width: 15%"> Lorry No. </th>
+        <td mat-cell class="mr-2" *matCellDef="let element"> {{element.lorryNo}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="productType">
+        <th mat-header-cell *matHeaderCellDef ng-view flex layout-fill style="width: 15%"> Product Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.metalType}} </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="discount">
+        <th mat-header-cell *matHeaderCellDef ng-view flex layout-fill style="width: 15%"> Discount(Rs.) </th>
+        <td mat-cell *matCellDef="let element"> {{element.discount}} </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef ng-view flex layout-fill style="width: 15%"> Price(Rs.) </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef ng-view flex layout-fill style="width: 15%"> Quantity(cube) </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 6, 7]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+</div>

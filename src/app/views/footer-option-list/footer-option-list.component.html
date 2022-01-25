@@ -1,0 +1,65 @@
+
+<div class="content h-100" role="main">
+  <div class="mt-3 w-100 h-100">
+    <div class="row h-100">
+      <ng-container *ngIf="footerSelection.newBill == footerSelectionName">
+        <div class="col">
+            <button [disabled]="isLastBillState" mat-raised-button color="primary" class="h-100 w-10 mr-1" (click)="btnClick(footerBtnName.previous)">
+              <mat-icon>fast_rewind</mat-icon>
+              <div>{{footerBtnName.previous}}</div>
+            </button>
+
+            <button mat-raised-button color="primary" class="h-100 w-10 mr-1" (click)="btnClick(footerBtnName.search)">
+              <mat-icon>search</mat-icon>
+              <div class="ml-1 mr-1">{{footerBtnName.search}}</div>
+            </button>
+
+            <button [disabled]="isNewBillState" mat-raised-button color="primary" class="h-100 w-10 mr-1" (click)="btnClick(footerBtnName.printBill)">
+              <mat-icon>print</mat-icon>
+              <div>{{footerBtnName.printBill}}</div>
+            </button>
+            <button mat-raised-button color="accent" class="h-100 w-10 mr-1" (click)="btnClick(footerBtnName.newBill)">
+              <mat-icon>add_box</mat-icon>
+              <div>{{footerBtnName.newBill}}</div>
+            </button>
+            <button [disabled]="isNewBillState || !isNextBillHasState" mat-raised-button color="primary" class=" h-100 w-10 mr-1" (click)="btnClick(footerBtnName.goNext)">
+              <mat-icon>fast_forward</mat-icon>
+              <div class="ml-1 mr-1">{{footerBtnName.goNext}}</div>
+            </button>
+        </div>
+        <div class="col-3">
+          <button mat-raised-button color="primary" class="h-100 w-100" (click)="btnClick(footerBtnName.viewBill,true)">
+            <img src='{{imagePath.VIEW}}' class="navi-bottom-img mr-2" alt = "Test Image" />
+            <span class="h6">{{footerBtnName.viewBill}}</span>
+          </button>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="footerSelection.viewBill == footerSelectionName">
+        <div class="col">
+          <button mat-raised-button color="primary" class="h-100 w-10 mr-1" (click)="btnClick(footerBtnName.startFilter)">
+            <mat-icon>filter_list</mat-icon>
+            <div class="ml-1 mr-1">{{footerBtnName.startFilter}}</div>
+          </button>
+
+          <button mat-raised-button color="primary" class="h-100 w-10 mr-1" (click)="btnClick(footerBtnName.printAll)">
+            <mat-icon>print</mat-icon>
+            <div>{{footerBtnName.printAll}}</div>
+          </button>
+          <button mat-raised-button class="h-100 w-10 mr-1" color="primary">
+            <div class="text-left">TOTAL PRICE AMOUNT : <span><b>Rs.{{totalPrice}} .00</b></span></div>
+
+            <div class="text-left">TOTAL QUANTITY AMOUNT : <span><b>Cube. {{totalQuantity}}</b></span></div>
+          </button>
+        </div>
+        <div class="col-3">
+          <button mat-raised-button color="primary" class="h-100 w-100" (click)="btnClick(footerBtnName.newBill,true)">
+            <img src='{{imagePath.ADD}}' class="navi-bottom-img mr-2" alt = "Test Image" />
+            <span class="h6">{{footerBtnName.newBill}}</span>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,159 @@
+<div class="content h-100 align-content-center" role="main">
+    <div class="row h-100 w-100 align-content-center">
+      <div class="col" align="center">
+        <div class="row box-size w-100 align-content-lg-center">
+          <div class="col h-100 w-50 align-items-center">
+            <span class="row h-100 w-100 align-content-center">
+              <h6 class="text-muted font-weight-bold">ORIGINAL BILL No&nbsp;:
+              </h6>
+            </span>
+          </div>
+          <div class="col h-100 w-50 align-items-center">
+            <span class="row h-100 w-100 align-content-center">
+              <h5 [class]="isNewBillState?'text-primary':'text-muted'">:&nbsp;&nbsp;&nbsp;{{currentBill.originalBillNo}}
+              </h5>
+            </span>
+          </div>
+        </div>
+        <div class="row box-size w-100 align-content-lg-center">
+          <div class="col h-100 w-50 align-items-center">
+            <span class="row h-100 w-100 align-content-center">
+              <h6 class="text-muted font-weight-bold">METAL TYPE&nbsp;:</h6>
+            </span>
+          </div>
+          <div class="col-8 h-100 w-50 mt-2">
+            <span class="row h-100 w-100 align-content-center">
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Select Metal Type</mat-label>
+                <mat-select  [disabled]="!isNewBillState" [formControl]="metalTypeValidator" (change)="changeMetalType($event)">
+                  <ng-container *ngFor="let metalType of commonDetails.metalTypeList">
+                    <mat-option [value]="metalType" >{{metalType}}</mat-option>
+                  </ng-container>
+                </mat-select>
+                <mat-error *ngIf="metalTypeValidator.invalid">Metal type required</mat-error>
+
+              </mat-form-field>
+            </span>
+          </div>
+        </div>
+        <div class="row box-size w-100 align-content-center">
+          <div class="col h-100 w-50 align-items-center">
+            <span class="row h-100 w-100 align-content-center">
+              <h6 class="text-muted font-weight-bold">LORRY No&nbsp;:</h6>
+            </span>
+          </div>
+          <div class="col-8 h-100 w-50 mt-2">
+            <span class="row h-100 w-100 align-content-center">
+              <mat-form-field  appearance="fill" class="w-100">
+              <mat-label>Enter Lorry No.</mat-label>
+              <input  [formControl]="lorryNoValidator" matInput placeholder="QL-9904">
+              <mat-error *ngIf="lorryNoValidator.invalid">Lorry No required</mat-error>
+            </mat-form-field>
+            </span>
+          </div>
+        </div>
+        <div class="row box-size w-100 align-content-center">
+          <div class="col h-100 w-50 align-items-center">
+            <span class="row h-100 w-100 align-content-center">
+              <h6 class="text-muted font-weight-bold">PRICE&nbsp;:</h6>
+            </span>
+          </div>
+          <div class="col-8 h-100 w-50 mt-2">
+            <span class="row h-100 w-100 align-content-center">
+              <mat-form-field appearance="fill" floatLabel="always" class="w-100">
+                <mat-label>Bill Amount</mat-label>
+                <input matInput type="number" [formControl]="priceValidator" class="example-right-align" placeholder="0">
+                <span matPrefix [class] = "!isNewBillState?'text-muted':''">Rs.&nbsp;</span>
+                <span matSuffix [class] = "!isNewBillState?'text-muted':''">.00</span>
+                <mat-error *ngIf="lorryNoValidator.invalid">Price amount required</mat-error>
+              </mat-form-field>
+            </span>
+          </div>
+        </div>
+        <div class="row box-size w-100 align-content-center">
+          <button [disabled]="!isNewBillState" mat-raised-button color="primary" class="w-100 h-75" (click)="onClickAddBill()">
+            <mat-icon class="mr-4">add_box</mat-icon>
+            ADD BILL</button>
+        </div>
+
+      </div>
+      <div class="col justify-content-center" align="center">
+        <div class="row box-size w-100 align-content-center">
+          <div class="col h-100 w-50 align-items-center">
+            <span class="row h-100 w-100 align-content-center">
+              <h6 class="text-muted font-weight-bold">DUPLICATE BILL No&nbsp;:</h6>
+            </span>
+          </div>
+          <div class="col h-100 w-50 align-items-center">
+            <span class="row h-100 w-100 align-content-center">
+              <h5 [class]="isNewBillState?'text-primary':'text-muted'">:&nbsp;&nbsp;&nbsp;{{currentBill.duplicateBillNo}}
+              </h5>
+            </span>
+          </div>
+        </div>
+        <div class="row box-size w-100 align-content-center">
+          <div class="col h-100 w-50 align-items-center">
+            <span class="row h-100 w-100 align-content-center">
+              <h6 class="text-muted font-weight-bold">QUANTITY&nbsp;:</h6>
+            </span>
+          </div>
+          <div class="col-8 h-100 w-50 mt-2">
+            <span class="row h-100 w-100 align-content-center">
+              <mat-form-field  appearance="fill" class="w-100">
+                  <mat-label>Quantity in cube</mat-label>
+                  <input matInput [formControl]="quantityValidator" type="number" placeholder="Ex. 12">
+                  <span matSuffix [class] = "!isNewBillState?'text-muted':''">cube</span>
+                  <mat-error *ngIf="quantityValidator.invalid">Quantity is required</mat-error>
+            </mat-form-field>
+            </span>
+          </div>
+        </div>
+        <div class="row box-size w-100 align-content-center">
+          <div class="col h-100 w-50 align-items-center">
+            <span class="row h-100 w-100 align-content-center">
+              <h6 class="text-muted font-weight-bold">DISCOUNT&nbsp;:</h6>
+            </span>
+          </div>
+          <div class="col-8 h-100 w-50 mt-2">
+            <span class="row h-100 w-100 align-content-center">
+              <mat-form-field appearance="fill" floatLabel="always" class="w-100">
+                <mat-label>Discount Amount</mat-label>
+                <input matInput type="number" [formControl]="discountValidator" class="example-right-align" placeholder="0">
+                <span matPrefix [class] = "!isNewBillState?'text-muted':''">Rs.&nbsp;</span>
+                <span matSuffix [class] = "!isNewBillState?'text-muted':''">.00</span>
+                <mat-error *ngIf="quantityValidator.invalid">Discount is required</mat-error>
+
+              </mat-form-field>
+            </span>
+          </div>
+        </div>
+        <div class="row box-size w-100 align-content-center">
+          <div class="col h-100 w-50 align-items-center">
+            <span class="row h-100 w-100 align-content-center">
+              <h6 class="text-muted font-weight-bold">DATE&nbsp;:</h6>
+            </span>
+          </div>
+          <div class="col-8 h-100 w-50 mt-2">
+            <span class="row h-100 w-100 align-content-center">
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Angular forms</mat-label>
+                <input matInput [matDatepicker]="picker1" [formControl]="dateValidator">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+</div>
+<app-pop-up-dialog
+  [active]="showPopUpDialog"
+  [isLoading]="isLoading"
+  [msgTitle]="msgTitle"
+  [imagePopUp]="imagePopUp"
+  [msgContent]="msgContent"
+  (activeEmit)="closePopUp($event)"
+></app-pop-up-dialog>
